@@ -60,13 +60,6 @@ Orchestrates the end-to-end process of loading PDFs, chunking text, and saving t
 ## Overall:
 This pipeline enables a chatbot to answer medical questions by retrieving relevant information from ingested PDFs and generating concise answers using an LLM.
 
-### [Click Here To See More About The Dataset](https://www.kaggle.com/c/learn-ai-bbc/data)   
-
-
-##  ML Flow Experiments
-[![mice_datapipeline]( https://github.com/SunilKumar-ugra/BBC_News_Classification_LSTM/assets/45965583/4562a3f7-1fa6-49b0-b7c2-0370c947256c)](https://dagshub.com/SunilKumar-ugra/BBC_News_Classification_LSTM.mlflow/)
-
-
 
 # How to run?
 ### STEPS:
