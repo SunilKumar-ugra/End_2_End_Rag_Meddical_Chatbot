@@ -99,5 +99,13 @@ python app/application.py
 
 Now,
 ```bash
+<<<<<<< HEAD
 http://127.0.0.1:80 #Open this url in the browser
 ```
+=======
+http://127.0.0.1:8080 #Open this url in the browser
+```
+
+
+
+>>>>>>> 0e4cbe9538a2d5a5ba708b72cb7b2fa0bf3381c3

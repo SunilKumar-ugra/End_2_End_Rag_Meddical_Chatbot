@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "dvc>=3.61.0",
     "faiss-cpu>=1.11.0.post1",
     "flask>=3.1.1",
     "hf-xet>=1.1.5",
