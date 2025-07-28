@@ -1,0 +1,152 @@
+schema: '2.0'
+stages:
+  pdf_loader:
+    cmd: python app/components/pdf_loader.py
+    deps:
+    - path: app/components/pdf_loader.py
+      hash: md5
+      md5: 3afb26c2a59ad3f2b773a620d382b916
+      size: 2029
+    - path: data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+      hash: md5
+      md5: 53c0dd111a671875ab3e962d48af721a
+      size: 12226938
+  embedding:
+    cmd: python app/components/embeddings.py
+    deps:
+    - path: app/components/embeddings.py
+      hash: md5
+      md5: db82556781c3357642c5e07f0ce73f8e
+      size: 679
+    - path: app/components/pdf_loader.py
+      hash: md5
+      md5: 3afb26c2a59ad3f2b773a620d382b916
+      size: 2029
+  vector_store:
+    cmd: python app/components/vector_store.py
+    deps:
+    - path: app/components/embeddings.py
+      hash: md5
+      md5: db82556781c3357642c5e07f0ce73f8e
+      size: 679
+    - path: app/components/vector_store.py
+      hash: md5
+      md5: c2cd771f5041896010b7197c28810a54
+      size: 1433
+  data_ingestion:
+    cmd: python app/components/data_ingestion.py
+    deps:
+    - path: app/components/data_ingestion.py
+      hash: md5
+      md5: 7c13b722d273df35b3586871cb8e9078
+      size: 820
+    - path: app/components/embeddings.py
+      hash: md5
+      md5: db82556781c3357642c5e07f0ce73f8e
+      size: 679
+    - path: app/components/pdf_loader.py
+      hash: md5
+      md5: 3afb26c2a59ad3f2b773a620d382b916
+      size: 2029
+    - path: app/components/vector_store.py
+      hash: md5
+      md5: c2cd771f5041896010b7197c28810a54
+      size: 1433
+    - path: app/config/config.py
+      hash: md5
+      md5: e1ecd173a98ba2d6b561084e77c1aa5c
+      size: 246
+    - path: data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+      hash: md5
+      md5: 53c0dd111a671875ab3e962d48af721a
+      size: 12226938
+    outs:
+    - path: vectorstore/db_faiss/index.faiss
+      hash: md5
+      md5: 952e771ce2861d643cd388e26588aad4
+      size: 10874925
+    - path: vectorstore/db_faiss/index.pkl
+      hash: md5
+      md5: 04612dc3796cd56365bb613f1ea6ba23
+      size: 4340326
+  llm:
+    cmd: python app/components/llm.py
+    deps:
+    - path: .env
+      hash: md5
+      md5: 1f98f1ed9666d494696c7c9d5275664a
+      size: 245
+    - path: app/components/llm.py
+      hash: md5
+      md5: e31baddef95bfb395c01b64051f418f6
+      size: 1616
+    - path: app/config/config.py
+      hash: md5
+      md5: e1ecd173a98ba2d6b561084e77c1aa5c
+      size: 246
+  retriever:
+    cmd: python app/components/retriever.py
+    deps:
+    - path: .env
+      hash: md5
+      md5: 1f98f1ed9666d494696c7c9d5275664a
+      size: 245
+    - path: app/components/embeddings.py
+      hash: md5
+      md5: db82556781c3357642c5e07f0ce73f8e
+      size: 679
+    - path: app/components/llm.py
+      hash: md5
+      md5: e31baddef95bfb395c01b64051f418f6
+      size: 1616
+    - path: app/components/retriever.py
+      hash: md5
+      md5: 694a9457c92a36d440377b05d34f593e
+      size: 1656
+    - path: app/components/vector_store.py
+      hash: md5
+      md5: c2cd771f5041896010b7197c28810a54
+      size: 1433
+    - path: app/config/config.py
+      hash: md5
+      md5: e1ecd173a98ba2d6b561084e77c1aa5c
+      size: 246
+    - path: vectorstore/db_faiss/index.faiss
+      hash: md5
+      md5: 952e771ce2861d643cd388e26588aad4
+      size: 10874925
+    - path: vectorstore/db_faiss/index.pkl
+      hash: md5
+      md5: 04612dc3796cd56365bb613f1ea6ba23
+      size: 4340326
+  application:
+    cmd: python app/application.py
+    deps:
+    - path: .env
+      hash: md5
+      md5: 1f98f1ed9666d494696c7c9d5275664a
+      size: 245
+    - path: app/application.py
+      hash: md5
+      md5: 54d18ef4b4c1058bd8c28e5b8e30dc60
+      size: 1858
+    - path: app/components/retriever.py
+      hash: md5
+      md5: 694a9457c92a36d440377b05d34f593e
+      size: 1656
+    - path: app/config/config.py
+      hash: md5
+      md5: e1ecd173a98ba2d6b561084e77c1aa5c
+      size: 246
+    - path: app/templates/index.html
+      hash: md5
+      md5: 104ee057d2bafad69d7ba849b8add44d
+      size: 1689
+    - path: vectorstore/db_faiss/index.faiss
+      hash: md5
+      md5: 952e771ce2861d643cd388e26588aad4
+      size: 10874925
+    - path: vectorstore/db_faiss/index.pkl
+      hash: md5
+      md5: 04612dc3796cd56365bb613f1ea6ba23
+      size: 4340326

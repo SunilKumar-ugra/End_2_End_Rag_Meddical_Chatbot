@@ -1,0 +1,64 @@
+stages:
+  pdf_loader:
+    cmd: python app/components/pdf_loader.py
+    deps: 
+      - app/components/pdf_loader.py
+      - data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+
+  embedding:
+    cmd: python app/components/embeddings.py
+    deps:
+      - app/components/embeddings.py
+      - app/components/pdf_loader.py
+    
+  vector_store:
+      cmd: python app/components/vector_store.py
+      deps:
+      - app/components/vector_store.py
+      - app/components/embeddings.py
+      
+  data_ingestion:
+    cmd: python app/components/data_ingestion.py
+    deps:
+      - app/components/data_ingestion.py
+      - app/components/pdf_loader.py
+      - app/components/embeddings.py
+      - app/components/vector_store.py
+      - data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+      - app/config/config.py
+    outs:
+      - vectorstore/db_faiss/index.faiss
+      - vectorstore/db_faiss/index.pkl
+
+  llm:
+    cmd: python app/components/llm.py
+    deps:
+      - app/components/llm.py
+      - app/config/config.py
+      - .env
+
+  retriever:
+    cmd: python app/components/retriever.py
+    deps:
+      - app/components/retriever.py
+      - app/components/embeddings.py
+      - app/components/vector_store.py
+      - app/components/llm.py
+      - vectorstore/db_faiss/index.faiss
+      - vectorstore/db_faiss/index.pkl
+      - app/config/config.py
+      - .env
+  
+  application:
+    cmd: python app/application.py
+    deps:
+      - app/application.py
+      - app/components/retriever.py
+      - vectorstore/db_faiss/index.faiss
+      - vectorstore/db_faiss/index.pkl
+      - app/templates/index.html
+      - app/config/config.py
+      - .env
+    
+      
+  

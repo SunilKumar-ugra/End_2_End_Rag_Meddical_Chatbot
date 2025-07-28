@@ -1,6 +1,6 @@
 # End_End RAG Based Medical chatbot
 
-
+![image info](./data/rag_based_system.png)
 
 * embeddings.py
     * Purpose:
@@ -60,13 +60,6 @@ Orchestrates the end-to-end process of loading PDFs, chunking text, and saving t
 ## Overall:
 This pipeline enables a chatbot to answer medical questions by retrieving relevant information from ingested PDFs and generating concise answers using an LLM.
 
-### [Click Here To See More About The Dataset](https://www.kaggle.com/c/learn-ai-bbc/data)   
-
-
-##  ML Flow Experiments
-[![mice_datapipeline]( https://github.com/SunilKumar-ugra/BBC_News_Classification_LSTM/assets/45965583/4562a3f7-1fa6-49b0-b7c2-0370c947256c)](https://dagshub.com/SunilKumar-ugra/BBC_News_Classification_LSTM.mlflow/)
-
-
 
 # How to run?
 ### STEPS:
@@ -108,7 +101,3 @@ Now,
 ```bash
 http://127.0.0.1:80 #Open this url in the browser
 ```
-
-## Project Demo
-
-[demo.webm](https://github.com/SunilKumar-ugra/BBC_News_Classification_LSTM/assets/45965583/716ff1e2-e3d0-4e6c-a243-d71d39390cad)
